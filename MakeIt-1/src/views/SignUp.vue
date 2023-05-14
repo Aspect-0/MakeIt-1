@@ -12,12 +12,12 @@
 <script lang="ts">
 import router from '@/router';
 import { useRouter } from 'vue-router';
-import { useCounterStore } from '@/stores/counter';
+import { useStore } from '@/stores/store';
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup () {
-    const store = useCounterStore()
+    const store = useStore()
     const usernameValue = ref("")
     const passwordValue = ref("")
     const router = useRouter()
@@ -44,12 +44,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .form{
-    display: flex;
-    flex-direction: column;
-  }
-  button{
-    height: 2rem;
-    width: 4rem;
-  }
+ 
 </style>

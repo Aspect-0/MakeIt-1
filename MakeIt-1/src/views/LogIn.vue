@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { useCounterStore } from '@/stores/counter'
+import { useStore } from '@/stores/store'
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
     setup () {
-        const store = useCounterStore()
+        const store = useStore()
         const loginusernameValue = ref('')
         const loginpasswordValue = ref('')
         const router = useRouter()

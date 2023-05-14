@@ -1,7 +1,7 @@
-import { ref, computed } from 'vue'
+
 import { defineStore } from 'pinia'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
-
+import { getDatabase,ref, onValue, set} from "firebase/database";
 import { auth } from '@/firebase/config'
 interface users{
   username: string,
@@ -12,7 +12,7 @@ interface State {
 }
 
 
-export const useCounterStore = defineStore('counter', {
+export const useStore = defineStore('counter', {
   state:(): State => {
     return{
       user: null
