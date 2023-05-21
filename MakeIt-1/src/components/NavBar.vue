@@ -15,9 +15,13 @@
 
                             <RouterLink  to="/login" >Login</RouterLink>
                         </h2>
+
                     </div>
 
                     <RouterLink @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
+                
+                    <RouterLink to="/create" >Create</RouterLink>
+                        
         </section>
     </div>
 </template>
@@ -43,6 +47,7 @@ export default defineComponent({
         top: 0%;
         display: flex;
         border-bottom: 1px solid black;
+        
 
     }
     

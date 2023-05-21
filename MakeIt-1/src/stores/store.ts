@@ -1,5 +1,6 @@
 
 import { defineStore } from 'pinia'
+import { termsStore } from './termCreation';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { getDatabase,ref, onValue, set} from "firebase/database";
 import { auth } from '@/firebase/config'
@@ -10,7 +11,8 @@ interface users{
 interface State {
   user: null|users|any
 }
-
+ 
+ 
 
 export const useStore = defineStore('counter', {
   state:(): State => {
@@ -49,8 +51,21 @@ export const useStore = defineStore('counter', {
       await signOut(auth)
       this.setUsers(null)
 
-    }
+    },
+  
+    createTermsList(userID:any){
+      const termStore = termsStore()
+      const db = getDatabase()
+      set(ref(db, 'users/' + userID), {
+        email: this.user.email,
+        title: termStore.title,
+        terms: termStore.termList,
+      })
+
+    },
 
   }
 }
 )
+
+ 
