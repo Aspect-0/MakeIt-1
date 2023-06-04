@@ -33,6 +33,11 @@ export const termsStore = defineStore("termsStore", {
         removeTerm(input:number){
             this.termList.splice(input, 1)
         },
+        clearTermList(){
+            this.termList = [{term: "", definition: ""}]
+            this.title = ""
+            this.author = ""
+        }
 
    
     },

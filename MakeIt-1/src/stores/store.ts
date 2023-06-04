@@ -56,7 +56,7 @@ export const useStore = defineStore('counter', {
     createTermsList(userID:any){
       const termStore = termsStore()
       const db = getDatabase()
-      set(ref(db, 'users/' + userID), {
+      set(ref(db, 'users/' + `${userID}/` + termStore.title ), {
         email: this.user.email,
         title: termStore.title,
         terms: termStore.termList,

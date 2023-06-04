@@ -5,6 +5,8 @@
 
         <input type="text" @input="pushTerm" v-model="term" placeholder="Enter Term"  >
         <input type="text" @input="pushDefinition" v-model="definition" placeholder="Enter Definition" >
+
+        <button>Image</button>
   
         <a class="close" v-show="store.termList.length != 1 " @click="store.removeTerm(index)" ></a>
     </div>
@@ -48,7 +50,7 @@ export default defineComponent({
     width: 80vw;
     height: 20vh;
     border-radius: 10px;
-    background-color: #4B5975;
+    background-color: var(--color4);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,24 +62,25 @@ export default defineComponent({
 }
 
 input{
-    height: 1rem;
+    height: 1.5rem;
     width: 40%;
     background-color: transparent;
     text-decoration: none;
     border: none;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-bottom: 3px solid var(--color5);
+    color: white;
 }
 input:focus{
     border: none;
     text-decoration: none;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid yellow;
     outline: none;
 }
 
 ::placeholder{
     opacity: 1;
-    color: var(--color5);
+    color: var(--color6);
 }
 
  

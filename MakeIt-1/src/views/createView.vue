@@ -5,7 +5,7 @@
      
             <div class="title">
 
-                <input type="text" placeholder="Title Your Set" class="" v-model="title">
+                <input type="text" placeholder="Title Your Set" class="" required v-model="title">
             </div>
 
 
@@ -15,7 +15,7 @@
 
             <a class="add" @click="store.addTerm"></a>
 
-            <button @click="createTerms(userStore.user.uid)" class="createButton" >Create</button>
+            <button @click="create" class="createButton" >Create</button>
 
 
  
@@ -27,6 +27,7 @@ import { defineComponent, ref } from 'vue'
 import { termsStore } from '@/stores/termCreation'
 import { useStore } from '@/stores/store'
 import termComponent from '@/components/termComponent.vue'
+import router from '@/router'
 interface form {
     title: ""
 
@@ -46,10 +47,22 @@ export default defineComponent({
     }
     ,
     methods: {
+        create(){
+            if(this.title){
+                this.createTerms(this.userStore.user.uid)
+            this.store.clearTermList()
+            }else{
+                alert("Please include a title")
+            }
+
+        },
+
         createTerms(uid:any){
+
             this.store.title = this.title
             console.log(this.store.title)
-            this.userStore.createTermsList(this.userStore.user.uid)
+            this.userStore.createTermsList(uid)
+            this.$router.push("/main")
         }
     }
 
@@ -69,10 +82,11 @@ export default defineComponent({
     position: relative;
     padding-bottom: 8rem;
     color: var(--color5);
+    font-family: Raleway;
 }
 
 .title{
-    height: 3rem;
+    height: 4rem;
     background-color: var(--color4);
     border-radius: 10px ;
     margin-bottom: 1rem;
@@ -85,26 +99,35 @@ export default defineComponent({
 
 .title input {
     background-color: transparent;
-    height: 1rem;
+    height: 1.5rem;
     width: 40%;
     background-color: transparent;
     text-decoration: none;
     border: none;
-    font-size: 1rem;
-    border-bottom: 3px solid var(--color5);
+    font-size: 1.5rem;
+ 
     margin-left: 2rem;
+    color: white;
+
 }
 
 .title input:focus{
     border: none;
     text-decoration: none;
-    border-bottom: 3px solid white;
+
     outline: none;
+
+    
+}
+
+.title:focus-within{
+    border-bottom: 3px solid var(--color5);
+ 
 }
 
 .title input::placeholder{
     opacity: 1;
-    color: var(--color5);
+    color: var(--color6);
 }
 .center {
     display: flex;
@@ -114,14 +137,18 @@ export default defineComponent({
 
 .add {
     position: absolute;
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 55px;
     background: transparent;
     cursor: pointer;
-    border: 2px solid var(--color4);
-    border-radius: 10000rem;
-    bottom: 1;
-    left: 50%;
+    border: 4px solid var(--color4);
+    border-radius: 10rem;
+    bottom: 1; 
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 .add:after {
@@ -169,7 +196,7 @@ export default defineComponent({
     right: 0;
     margin-right: 3rem;
     margin-top: 3rem;
-    
+    font-family: "Raleway";
 
     
 }
