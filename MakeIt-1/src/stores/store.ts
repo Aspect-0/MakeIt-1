@@ -9,7 +9,8 @@ interface users{
   password: string
 }
 interface State {
-  user: null|users|any
+  user: null|users|any,
+  termList: any
 }
  
  
@@ -17,7 +18,8 @@ interface State {
 export const useStore = defineStore('counter', {
   state:(): State => {
     return{
-      user: null
+      user: null,
+      termList: [],
     }
   },
   actions:{
@@ -52,6 +54,7 @@ export const useStore = defineStore('counter', {
       this.setUsers(null)
 
     },
+
   
     createTermsList(userID:any){
       const termStore = termsStore()
@@ -61,6 +64,20 @@ export const useStore = defineStore('counter', {
         title: termStore.title,
         terms: termStore.termList,
       })
+
+    },
+
+    readUserData(userID:any){
+      const uid = userID.uid
+      const db = getDatabase()
+      console.log(uid)
+      const userTermList = ref(db, 'users/' + `${uid}`);
+      onValue(userTermList, (titles) =>{
+        const title = titles.val()
+        this.termList = title
+      })
+     
+ 
 
     },
 

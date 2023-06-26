@@ -5,17 +5,26 @@
                 <h3>Create</h3>
             </div>
         </section>
+        <section class="mid">
+            <h2>Your Cards</h2>
+            <div v-for="term in store.termList" >{{ term.title }}</div>
+        </section>
+  
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import { useStore } from '@/stores/store';
 export default defineComponent({
     setup () {
-        
+        const store = useStore()
+        store.readUserData(store.user)
 
-        return {}
+        return {store}
+    },
+    methods:{
+
     }
 })
 </script>
