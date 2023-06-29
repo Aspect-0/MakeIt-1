@@ -18,9 +18,14 @@
 
                     </div>
 
-                    <RouterLink @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
+                    <div v-if="store.user" > 
+                        <RouterLink @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
+                        <RouterLink to="/create" >Create</RouterLink>
+                        <RouterLink to="/main">Main</RouterLink>
+                        
+                    </div>
+
                 
-                    <RouterLink to="/create" >Create</RouterLink>
                         
         </section>
     </div>

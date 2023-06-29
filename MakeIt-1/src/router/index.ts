@@ -29,7 +29,16 @@ const router = createRouter({
       name: 'create',
       component: () => import('../views/createView.vue')
       
+    },
+
+    {
+      path: '/sets/:setTitle',
+      name: 'sets',
+      component: () => import('../views/setPageView.vue')
+
     }
+    
+
     
     
   ]

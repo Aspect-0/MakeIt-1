@@ -8,9 +8,20 @@ interface users{
   username: string,
   password: string
 }
+interface terms{
+  definition: string,
+  term: string,
+}
+
+interface database{
+  email: string,
+  terms: Array<terms>
+  title: string,
+}
+
 interface State {
   user: null|users|any,
-  termList: any
+  termList: Array<database>
 }
  
  
@@ -76,9 +87,6 @@ export const useStore = defineStore('counter', {
         const title = titles.val()
         this.termList = title
       })
-     
- 
-
     },
 
   }
