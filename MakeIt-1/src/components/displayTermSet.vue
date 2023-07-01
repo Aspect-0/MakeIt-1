@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <RouterLink :to="`/sets/${setTitle}`" >Test</RouterLink>
+        <RouterLink :to="`/sets/${uid}/${setTitle}`" >Test</RouterLink>
 
         <h2 class="setTitle" >{{ setTitle }}</h2>
         <img src="" alt="" class="setImage">
@@ -23,6 +23,10 @@ export default defineComponent({
         type: Number,
       },
       author:{
+        required: true,
+        type: String,
+      },
+      uid:{
         required: true,
         type: String,
       }

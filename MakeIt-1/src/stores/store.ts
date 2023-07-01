@@ -21,8 +21,10 @@ interface database{
 
 interface State {
   user: null|users|any,
-  termList: Array<database>
-  test: any
+  termList: Array<database>,
+  specificData: any,
+  author: string,
+  selectUID: string | null,
 }
  
  
@@ -32,13 +34,24 @@ export const useStore = defineStore('counter', {
     return{
       user: null,
       termList: [],
-      test: {},
+      specificData: {},
+      author: "",
+      selectUID: "",
     }
   },
   actions:{
     setUsers(param:any){
       this.user = param
       console.log(this.user)
+
+      if(this.user){
+      
+              this.author = param.email.slice(0, param.email.length - 10)
+              console.log(this.author)
+
+
+
+      }
     },
 
     async signup(username:string, password:string){
@@ -96,7 +109,7 @@ export const useStore = defineStore('counter', {
       const path = ref(db, 'users/' + `${uid}/` + `${title}` )
       onValue(path, (vals) =>{
         const v = vals.val()
-        this.test = v
+        this.specificData = v
       })
 
     }
