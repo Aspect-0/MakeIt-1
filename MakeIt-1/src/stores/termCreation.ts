@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
- 
-import { ref } from "vue";
+
 interface terms{
     term: string,
     definition: string,
@@ -20,6 +19,7 @@ export const termsStore = defineStore("termsStore", {
 
             title: "",
             author: "",
+         
             termList: [
                 {term: "", definition: ""}
             ]

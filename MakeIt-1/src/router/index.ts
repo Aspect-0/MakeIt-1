@@ -32,8 +32,9 @@ const router = createRouter({
     },
 
     {
-      path: '/sets/:author/:setTitle',
+      path: '/sets/:uid/:author/:setTitle',
       name: 'sets',
+      props: true,
       component: () => import('../views/setPageView.vue')
 
     }

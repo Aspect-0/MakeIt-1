@@ -41,20 +41,22 @@ export default defineComponent({
     width: 100%;
     height: 20rem;
     position: relative;
-    background-color: red;
+    background-color: var(--color4);
     transition: all 0.5s;
-
+    border-radius: 0.3rem;
+    
 }
 
 .cardFront, .cardBack{
     position: absolute;    
     backface-visibility: hidden;
     height: 100%;
-    width: 100%;
+    width: 80%;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-left: 10%;
 }
 
 .cardFront{

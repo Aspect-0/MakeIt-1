@@ -11,7 +11,7 @@
         <section class="userCards">
  
 
-                <displayTermSet class="sets" v-for="set in store.termList" :set-title="set.title" :author="store.author" :uid="store.user.uid" :term-count="set.terms.length" ></displayTermSet>
+                <displayTermSet class="sets" v-for="set in store.termList" :set-title="set.title" :author="set.email" :uid="set.uid" :term-count="set.terms.length" ></displayTermSet>
            
         </section>
 

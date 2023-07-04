@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <RouterLink :to="`/sets/${uid}/${setTitle}`" >Test</RouterLink>
+        <RouterLink @click="setStore.setTermInfo($props.uid, $props.author)" :to="{name: 'sets',  params:{uid: $props.uid, setTitle: $props.setTitle, author: $props.author}}" >Test</RouterLink>
 
         <h2 class="setTitle" >{{ setTitle }}</h2>
         <img src="" alt="" class="setImage">
@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import { useSetStore } from '@/stores/obtainSetData'
 export default defineComponent({
     props:{
       setTitle:{
@@ -31,10 +31,10 @@ export default defineComponent({
         type: String,
       }
     },
-    setup () {
-
-
-        return {}
+    setup (props) {
+      console.log(props.author, props.uid)
+      const setStore = useSetStore()
+        return {setStore}
     }
 })
 </script>

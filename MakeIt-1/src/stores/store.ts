@@ -17,6 +17,7 @@ interface database{
   email: string,
   terms: Array<terms>
   title: string,
+  uid: string,
 }
 
 interface State {
@@ -89,6 +90,7 @@ export const useStore = defineStore('counter', {
         email: this.user.email,
         title: termStore.title,
         terms: termStore.termList,
+        uid: this.user.uid
       })
 
     },
@@ -104,9 +106,9 @@ export const useStore = defineStore('counter', {
       })
     },
     readSpecificData(userID:any, title:string){
-      const uid = userID.uid
+      
       const db = getDatabase()
-      const path = ref(db, 'users/' + `${uid}/` + `${title}` )
+      const path = ref(db, 'users/' + `${userID}/` + `${title}` )
       onValue(path, (vals) =>{
         const v = vals.val()
         this.specificData = v
