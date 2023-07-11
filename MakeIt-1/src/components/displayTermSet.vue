@@ -1,12 +1,16 @@
 <template>
-    <div class="container">
-        <RouterLink @click="setStore.setTermInfo($props.uid, $props.author)" :to="{name: 'sets',  params:{uid: $props.uid, setTitle: $props.setTitle, author: $props.author}}" >Test</RouterLink>
-
-        <h2 class="setTitle" >{{ setTitle }}</h2>
+   
+        <RouterLink class="container" @click="setStore.setTermInfo($props.uid, $props.author)" :to="{name: 'sets',  params:{uid: $props.uid, setTitle: $props.setTitle, author: $props.author}}" >
+        
+          <h2 class="setTitle" >{{ setTitle }}</h2>
         <img src="" alt="" class="setImage">
         <h5 class="termCount">{{ termCount }} terms</h5>
         <h3 class="author">{{ author }}</h3>
-    </div> 
+        
+        </RouterLink>
+
+ 
+    
 </template>
 
 <script lang="ts">
@@ -41,6 +45,7 @@ export default defineComponent({
 
 <style scoped>
 
+
 .container{
     height: 7rem;
     width: 20rem;
@@ -50,6 +55,8 @@ export default defineComponent({
     border-radius: 10px;
     padding: 1rem;
     position: relative;
+    text-decoration: none;
+    color: white;
 }
 
 .termCount{

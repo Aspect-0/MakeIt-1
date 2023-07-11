@@ -17,7 +17,10 @@
 
         <h2>Other Cards</h2>
 
-        <section class="otherCards"></section>
+        <section class="otherCards">
+                <displayTermSet class="sets" v-for="set in store.allSets" :set-title="set.title" :author="set.email" :uid="set.uid" :term-count="set.terms.length" ></displayTermSet>
+
+        </section>
   
     </div>
 </template>
@@ -30,22 +33,19 @@ export default defineComponent({
     components:{
         displayTermSet
     },
+    
     setup () {
         const store = useStore()
         store.readUserData(store.user)
-        // const termListLength = store.termList.length
-        let termListLength = 0
 
-        console.log(store.termList)
-        console.log(typeof(store.termList))
+        
+        store.getAllSets()
 
-        for( const a in store.termList){
-            termListLength += 1
-        }
+        
+        
 
-        console.log(termListLength)
 
-        return {store, termListLength}
+        return {store}
     },
     methods:{
 
@@ -69,21 +69,23 @@ section{
     color:white;
 
 }
-.userCards{
+.userCards, .otherCards{
 
     width: 90%;
     margin: auto;
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(calc(v-bind(termListLength)/2), 1fr);
+    grid-template-columns: repeat(calc(v-bind(store.termListLength)/2), 1fr);
     overflow-x: scroll;
 
     
 } 
 
 .otherCards{
-    
+    grid-template-columns: repeat(calc(v-bind(store.allSetsLength)/2),1fr) ;
 }
+
+
  
 
 </style>

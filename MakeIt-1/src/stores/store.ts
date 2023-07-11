@@ -26,6 +26,9 @@ interface State {
   specificData: any,
   author: string,
   selectUID: string | null,
+  allSets: Array<database>,
+  termListLength: number,
+  allSetsLength: number,
 }
  
  
@@ -38,6 +41,9 @@ export const useStore = defineStore('counter', {
       specificData: {},
       author: "",
       selectUID: "",
+      allSets:[], 
+      termListLength: 0,
+      allSetsLength: 0,
     }
   },
   actions:{
@@ -103,6 +109,12 @@ export const useStore = defineStore('counter', {
       onValue(userTermList, (titles) =>{
         const title = titles.val()
         this.termList = title
+
+        
+        for( const a in this.termList){this.termListLength += 1}
+        console.log(this.termList,this.termListLength)
+
+
       })
     },
     readSpecificData(userID:any, title:string){
@@ -114,7 +126,34 @@ export const useStore = defineStore('counter', {
         this.specificData = v
       })
 
-    }
+    },
+    getAllSets(){
+      const db = getDatabase()
+      const path = ref(db, 'users/')
+      onValue(path, (set) =>{
+        const sets = set.val()
+        console.log(sets)
+        
+        let listOfSets = []
+
+        for(const user in sets){
+          for(const set in sets[user]){
+            listOfSets.push(sets[user][set])
+          }
+        }
+
+        this.allSets = listOfSets
+        this.allSetsLength = listOfSets.length
+
+
+        console.log(this.allSets, this.allSetsLength)
+        
+      })
+
+    },
+
+
+
 
   }
 }
