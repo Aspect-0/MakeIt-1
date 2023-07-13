@@ -37,6 +37,14 @@ const router = createRouter({
       props: true,
       component: () => import('../views/setPageView.vue')
 
+    },
+
+    {
+      path: '/:uid/:author/:setTitle/edit',
+      name: 'edit',
+      props: true,
+      component: () => import('../views/editPageView.vue')
+
     }
     
 

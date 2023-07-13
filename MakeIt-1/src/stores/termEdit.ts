@@ -13,7 +13,7 @@ interface State{
 
 
 
-export const termsStore = defineStore("termsStore", {
+export const editStore = defineStore("editStore", {
     state:(): State => {
         return{
 
@@ -31,10 +31,9 @@ export const termsStore = defineStore("termsStore", {
             this.termList.push({term:"", definition:""})
         },
         removeTerm(input:number){
+
             console.log(input)
-            console.log(this.termList)
-            this.termList.splice(input, 1)
-            console.log(this.termList)
+            console.log(this.termList.splice(input,1))
         },
         clearTermList(){
             this.termList = [{term: "", definition: ""}]

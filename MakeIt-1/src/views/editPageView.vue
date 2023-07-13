@@ -10,8 +10,8 @@
 
 
 
-            <termComponent v-for=" (term, index) in store.termList" :key="index
-                " :index="index"></termComponent>
+            <editTermComponent v-for=" (term, index) in store.termList" :key="index
+                " :index="index"></editTermComponent>   
 
             <a class="add" @click="store.addTerm"></a>
 
@@ -24,20 +24,20 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { termsStore } from '@/stores/termCreation'
+import { editStore } from '@/stores/termEdit'
 import { useStore } from '@/stores/store'
-import termComponent from '@/components/termComponent.vue'
+import editTermComponent from '@/components/editTermComponent.vue'
 
 export default defineComponent({
     components: {
-        termComponent
+        editTermComponent
     },
     setup() {
-        const store = termsStore()
+        const store = editStore()
         const userStore = useStore()
         const title = ref<string>(store.title)
 
-        
+
         return { store,title, userStore }
 
     }

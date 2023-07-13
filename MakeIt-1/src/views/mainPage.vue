@@ -41,10 +41,6 @@ export default defineComponent({
         
         store.getAllSets()
 
-        
-        
-
-
         return {store}
     },
     methods:{
@@ -75,8 +71,11 @@ section{
     margin: auto;
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(calc(v-bind(store.termListLength)/2), 1fr);
+    justify-content: left;
+    grid-template-columns: repeat(calc(v-bind(store.termListLength)), 1fr);
+    
     overflow-x: scroll;
+
 
     
 } 
