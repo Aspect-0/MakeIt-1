@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 
 interface terms{
+    id: number,
     term: string,
     definition: string,
 }
@@ -9,6 +10,7 @@ interface State{
     title: string,
     author: string,
     termList: Array<terms>
+    idCounter: number
 }
 
 
@@ -19,16 +21,16 @@ export const termsStore = defineStore("termsStore", {
 
             title: "",
             author: "",
-         
+            idCounter: 1,
             termList: [
-                {term: "", definition: ""}
+                {term: "", definition: "", id: 0}
             ]
         }
     },
 
     actions:{
         addTerm(){
-            this.termList.push({term:"", definition:""})
+            this.termList.push({term:"", definition:"", id: this.idCounter++})
         },
         removeTerm(input:number){
             console.log(input)
@@ -37,7 +39,7 @@ export const termsStore = defineStore("termsStore", {
             console.log(this.termList)
         },
         clearTermList(){
-            this.termList = [{term: "", definition: ""}]
+            this.termList = [{term: "", definition: "", id: 0}]
             this.title = ""
             this.author = ""
         },

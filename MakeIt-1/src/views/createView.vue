@@ -10,8 +10,8 @@
 
 
 
-            <termComponent v-for=" (term, index) in store.termList" :key="index
-                " :index="index"></termComponent>
+            <termComponent v-for=" (term, index) in store.termList" :key="term.id
+                " :index="index" :store="store"></termComponent>
 
             <a class="add" @click="store.addTerm"></a>
 

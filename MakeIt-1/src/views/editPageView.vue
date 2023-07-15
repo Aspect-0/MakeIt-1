@@ -10,8 +10,8 @@
 
 
 
-            <editTermComponent v-for=" (term, index) in store.termList" :key="index
-                " :index="index"></editTermComponent>   
+            <termComponent v-for=" (term, index) in store.termList" :key="term.id"
+            :index="index" :store="store"></termComponent>   
 
             <a class="add" @click="store.addTerm"></a>
 
@@ -26,11 +26,12 @@
 import { defineComponent, ref } from 'vue'
 import { editStore } from '@/stores/termEdit'
 import { useStore } from '@/stores/store'
-import editTermComponent from '@/components/editTermComponent.vue'
+import termComponent from '@/components/termComponent.vue'
+import { storeToRefs } from 'pinia'
 
 export default defineComponent({
     components: {
-        editTermComponent
+        termComponent
     },
     setup() {
         const store = editStore()

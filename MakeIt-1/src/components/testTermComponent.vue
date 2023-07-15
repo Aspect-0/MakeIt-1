@@ -14,7 +14,21 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { editStore } from '@/stores/termEdit'
+
+
+interface terms{
+    id: number,
+    term: string,
+    definition: string,
+}
+
+interface State{
+    title: string,
+    author: string,
+    termList: Array<terms>
+    idCounter: number
+    removeTerm: (index: number) => void
+}
 
 export default defineComponent({
     props:{
@@ -22,15 +36,18 @@ export default defineComponent({
             type: Number,
             required: true,
         },
- 
+        store:{
+            type: Object as () => State,
+            required: true,
+        }
     },
     setup (props) {
        
-        const store = editStore()
-        const term = ref<string>(store.termList[props.index].term)
-        const definition = ref<string>(store.termList[props.index].definition)
+      
+        const term = ref<string>(props.store.termList[props.index].term)
+        const definition = ref<string>(props.store.termList[props.index].definition)
        
-        return {store,term, definition}
+        return {term, definition}
     },
 
     methods:{
