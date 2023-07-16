@@ -48,12 +48,17 @@ export default defineComponent({
     .nav{
         max-width: 100vw;
         height: 5vh;
-        position: static;
+        position: sticky;
         top: 0%;
         display: flex;
         border-bottom: 1px solid black;
-        
+      
+        transition: transform .5s cubic-bezier(.4,0,.2,1);
 
+    }
+
+    .nav:hover{
+        transform: translateY(0);
     }
     
     .left{

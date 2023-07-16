@@ -1,4 +1,5 @@
 <template>
+  
   <div class="form" >
     <h1>Sign Up</h1>
     <h2>Username</h2>
@@ -7,6 +8,8 @@
     <input type="password" v-model="passwordValue" placeholder="Password">
     <button @click="sendSignupData({username: usernameValue, password: passwordValue})" >Submit</button>
   </div>
+
+  
 </template>
 
 <script lang="ts">
