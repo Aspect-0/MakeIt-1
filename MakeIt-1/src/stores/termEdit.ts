@@ -31,9 +31,10 @@ export const editStore = defineStore("editStore", {
             this.termList.push({term:"", definition:"", id: this.idCounter++})
         },
         removeTerm(input:number){
-
             console.log(input)
-            console.log(this.termList.splice(input,1))
+            console.log(this.termList)
+            this.termList.splice(input, 1)
+            console.log(this.termList)
         },
         clearTermList(){
             this.termList = [{term: "", definition: "", id: 0}]

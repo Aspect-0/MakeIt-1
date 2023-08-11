@@ -91,7 +91,8 @@ export default defineComponent({
     border: none;
     border-bottom: 3px solid var(--color4);
     outline: none;
-    
+    color: white;
+    opacity: 0.8;
 }
 
 .input:focus{

@@ -51,15 +51,10 @@ export default defineComponent({
         position: sticky;
         top: 0%;
         display: flex;
-        border-bottom: 1px solid black;
-      
-        transition: transform .5s cubic-bezier(.4,0,.2,1);
+        z-index: 3;
 
     }
 
-    .nav:hover{
-        transform: translateY(0);
-    }
     
     .left{
         width: 50%;
