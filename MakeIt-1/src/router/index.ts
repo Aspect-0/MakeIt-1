@@ -45,6 +45,10 @@ const router = createRouter({
       props: true,
       component: () => import('../views/editPageView.vue')
 
+    }, {
+      path: '/test',
+      name:'test',
+      component: () => import('../views/test.vue')
     }
     
 
