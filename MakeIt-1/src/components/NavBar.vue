@@ -18,7 +18,7 @@
 
                     </div>
 
-                    <div v-if="store.user" > 
+                    <div class="div-right" v-if="store.user" > 
                         <RouterLink class="link" @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
                         <RouterLink class="link" to="/create" >Create</RouterLink>
                         <RouterLink class="link" to="/main">Main</RouterLink>
