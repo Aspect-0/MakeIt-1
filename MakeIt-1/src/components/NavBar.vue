@@ -1,27 +1,27 @@
 <template>
     <div class="nav">
         <section class="left">
-            <h2>MakeIt-1</h2>
+            <RouterLink class="headLink" to="/" >MakeIt-1</RouterLink>
         </section>
         <section class="right">
             
                     <div class="div-right" v-if="!store.user" >
                         <h2>
-                            <RouterLink to="/signup">Sign Up</RouterLink>
+                            <RouterLink class="link" to="/signup">Sign Up</RouterLink>
 
                         </h2>
 
                         <h2>
 
-                            <RouterLink  to="/login" >Login</RouterLink>
+                            <RouterLink class="link"  to="/login" >Login</RouterLink>
                         </h2>
 
                     </div>
 
                     <div v-if="store.user" > 
-                        <RouterLink @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
-                        <RouterLink to="/create" >Create</RouterLink>
-                        <RouterLink to="/main">Main</RouterLink>
+                        <RouterLink class="link" @click="store.signOut" to="/login" v-if="store.user" >Sign Out</RouterLink>
+                        <RouterLink class="link" to="/create" >Create</RouterLink>
+                        <RouterLink class="link" to="/main">Main</RouterLink>
                         
                     </div>
 
@@ -55,7 +55,10 @@ export default defineComponent({
 
     }
 
-    
+    .headLink{
+        font-size: 2rem;
+        font-weight: 600;
+    }
     .left{
         width: 50%;
         text-align: left;
@@ -79,4 +82,10 @@ export default defineComponent({
         text-decoration: none;
         margin-right: 2rem;
     }
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+
 </style>
