@@ -29,6 +29,15 @@
     </div>
 
 
+    <div ref="woosh2" class="animate">
+
+      Thank you for checking out my website!
+    </div>
+
+    <div class="bottom">
+
+    </div>
+
      
 
   </section>
@@ -49,29 +58,35 @@ export default defineComponent({
   setup () {
     
     const woosh = ref<HTMLElement|null>(null)
-    const checkScroll = () =>{
-      const height = woosh.value?.getBoundingClientRect()
-      if(height.bottom <= window.innerHeight && height.right <= window.innerHeight){
-        woosh.value?.classList.add("active")
+    const woosh2 = ref<HTMLElement|null>(null)
+    const checkScroll = (el:any) =>{
+      const height = el.value?.getBoundingClientRect()
+
+      if(el == woosh &&  height.bottom <= window.innerHeight && height.right <= window.innerHeight){
+        el.value?.classList.add("active")
+      } else if(el == woosh2 &&  height.bottom <= window.innerHeight && height.right <= window.innerHeight){
+        el.value?.classList.add("activeLeft")
       } else{
-       woosh.value?.classList.remove("active")
+       el.value?.classList.remove("active")
+       el.value?.classList.remove("activeLeft")
       }
     }
 
-    const height = 300
+   
 
 
     onMounted(()=>{
-      checkScroll()
-
+      checkScroll(woosh)
+      checkScroll(woosh2)
       window.addEventListener("wheel", ()=>{
-        checkScroll()
+        checkScroll(woosh)
+        checkScroll(woosh2)
       })
 
     })
 
     return{
-      woosh, height
+      woosh,woosh2,
     }
   },
   methods:{
@@ -149,6 +164,10 @@ export default defineComponent({
   
 
 }
+.bottom{
+  height: 5rem;
+  background-color: black;
+}
 
 .animate{
   height: 30rem;
@@ -157,10 +176,21 @@ export default defineComponent({
   opacity: 0;
 }
 
+.aniL{
+  text-align: right;
+}
+
 .active{
   opacity: 1;
   font-size: 2rem;
   animation: slide-in 0.5s;
+}
+.activeLeft{
+  opacity: 1;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-right: 1rem;
+  animation: slide-left 0.5s;
 }
 
 
@@ -177,6 +207,16 @@ export default defineComponent({
 @keyframes slide-in{
   0%{
      transform: translateX(-500px);
+
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}
+ 
+@keyframes slide-left{
+  0%{
+     transform: translateX(500px);
 
   }
   100%{
