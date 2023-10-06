@@ -6,7 +6,7 @@
       <input type="text" @input="pushTerm" v-model="term" placeholder="Enter Term"  >
       <input type="text" @input="pushDefinition" v-model="definition" placeholder="Enter Definition" >
 
-      <button>Image</button>
+     
 
       <a class="close" v-show="store.termList.length != 1 " @click="store.removeTerm(index)" ></a>
   </div>
